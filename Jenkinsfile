@@ -1,22 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
     environment {
         CI = 'true'
     }
     stages {
         stage('Build') {
             steps {
+                sh 'chmod -R 777 ./jenkins/scripts'
                 sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'chmod -R 777 ./jenkins/scripts'
                 sh './jenkins/scripts/test.sh'
             }
         }
@@ -27,9 +21,9 @@ pipeline {
             }
         }
     }
-      post {
-          always {
-              archiveArtifacts artifacts: 'build/**/*', fingerprint: true
-          }
-      }
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/**/*', fingerprint: true
+        }
+    }
 }
