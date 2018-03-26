@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'sudo chmod -R 777 ./jenkins/scripts'
+                sh 'chmod -R 777 ./jenkins/scripts'
                 sh './jenkins/scripts/test.sh'
             }
         }
