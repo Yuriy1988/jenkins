@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'whoami'
+                sh 'chmod 777'
+                sh './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
