@@ -29,8 +29,7 @@ pipeline {
     }
       post {
           always {
-              archiveArtifacts artifacts: 'build/libs/**/*', fingerprint: true
-              junit 'build/**.*'
+              archiveArtifacts artifacts: 'build/**/*', fingerprint: true
           }
       }
 }
